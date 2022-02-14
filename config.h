@@ -7,14 +7,14 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Ubuntu Mono Ligaturized:style=bold:size=12"};
-static const char dmenufont[]       =   "Ubuntu Mono Ligaturized:style=bold:size=12" ;
+static const char *fonts[]          = { "Ubuntu Mono:style=bold:size=12"};
+static const char dmenufont[]       =   "Ubuntu Mono:style=bold:size=12" ;
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const unsigned int baralpha = 0xd0;
+static const char col_cyan[]        = "#bb3322"; // #005577 original colour
+static const unsigned int baralpha = 0xb2;
 static const unsigned int borderalpha = OPAQUE;
 static const char urgbordercolor[] = "#ff0000";
 /*removed for wal support(*/
@@ -36,6 +36,10 @@ static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeTagsSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeTagsNorm]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeInfoSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeInfoNorm]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
