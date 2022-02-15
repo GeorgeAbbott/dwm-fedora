@@ -819,7 +819,7 @@ drawbar(Monitor *m)
 				masterclientontag[i][0] = tolower(masterclientontag[i][0]);
 			}
 	}
-    // FIXME: ptagf here accepts too many parameters because of this, I need
+    // TAGS_PATCH: ptagf here accepts too many parameters because of this, I need
     // to add the ordering here and make tags be tags[0]
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
