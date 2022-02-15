@@ -50,19 +50,19 @@ static const unsigned int alphas[][3]      = {
 // TODO: also, this assumes you want the order NUM GLYPH TAGNAME. This can be 
 // changed as well, to accept an ordering.
 static const char *tags[][2] = { 
-                              { "1 ", "symb" },        // Terminal
-                              { "2 ", "symb" },        // Work
-                              { "3 ", "symb" },        // KeePassXC
-                              { "4 ", "symb" },        // Music
-                              { "5 ", "symb" },        // Programming
-                              { "6  ", "symb" },        // Discord - icon TBA
-                              { "7  ", "symb" },        // Use TBA 
-                              { "8 ", "symb" },        // Firefox
-                              { "9 ", "symb" },        // Librewolf
+                              { "1", "" },        // Terminal
+                              { "2", "" },        // Work
+                              { "3", "" },        // KeePassXC
+                              { "4", "" },        // Music
+                              { "5", "" },        // Programming
+                              { "6", " " },        // Discord - icon TBA
+                              { "7", " " },        // Use TBA 
+                              { "8", "" },        // Firefox
+                              { "9", "" },        // Librewolf
                             };
 // These are for where there is a 
-static const int num_position = 0;
-static const int glyph_position = 1;
+static const int num_position = 1;
+static const int glyph_position = 0;
 static const int tagname_position = 2;
 static const char ptagf[] = "|%s %s: %s|";	/* format of a tag label */
 // where there is not just add glyph into here
