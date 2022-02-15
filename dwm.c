@@ -832,23 +832,23 @@ drawbar(Monitor *m)
          * the information onto the tag. 
          */
 
-        const char* zeroth = num_position == 0 ? tags[i][0]
+        char* zeroth = num_position == 0 ? tags[i][0]
             : glyph_position == 0 ? tags[i][1] 
             : tagname_position == 0 ? masterclientontag[i] : "uhoh";
 
 
-        const char* first = num_position == 0 ? tags[i][0]
-            : glyph_position == 0 ? tags[i][1] 
-            : tagname_position == 0 ? masterclientontag[i] : "uhoh";
+        char* first = num_position == 1 ? tags[i][0]
+            : glyph_position == 1 ? tags[i][1] 
+            : tagname_position == 1 ? masterclientontag[i] : "uhoh";
 
 
-        const char* second = num_position == 0 ? tags[i][0]
-            : glyph_position == 0 ? tags[i][1] 
-            : tagname_position == 0 ? masterclientontag[i] : "uhoh";
+        char* second = num_position == 2 ? tags[i][0]
+            : glyph_position == 2 ? tags[i][1] 
+            : tagname_position == 2 ? masterclientontag[i] : "uhoh";
 
         // Modified Version
         if (masterclientontag[i]) 
-            snprintf(tagdisp, 64, zeroth, first, second);
+            snprintf(tagdisp, 64, ptagf, zeroth, first, second);
         else 
             snprintf(tagdisp, 64, etagf, tags[i][0]);
 
