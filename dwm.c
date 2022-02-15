@@ -57,6 +57,9 @@
 #define INTERSECT(x,y,w,h,m)    (MAX(0, MIN((x)+(w),(m)->wx+(m)->ww) - MAX((x),(m)->wx)) \
                                * MAX(0, MIN((y)+(h),(m)->wy+(m)->wh) - MAX((y),(m)->wy)))
 #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
+// TODO: verify that this is still true even given the change to tags. As one
+// element of the lot is still the same ratio, I believe it should still hold
+// true.
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
 #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
@@ -816,16 +819,46 @@ drawbar(Monitor *m)
 				masterclientontag[i][0] = tolower(masterclientontag[i][0]);
 			}
 	}
+    // FIXME: ptagf here accepts too many parameters because of this, I need
+    // to add the ordering here and make tags be tags[0]
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
+
 		/* do not draw vacant tags */
 		if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
 		continue;
 
+        /* This is modified by myself and allows for using the order to draw 
+         * the information onto the tag. 
+         */
+
+        const char* zeroth = num_position == 0 ? tags[i][0]
+            : glyph_position == 0 ? tags[i][1] 
+            : tagname_position == 0 ? masterclientontag[i] : "uhoh";
+
+
+        const char* first = num_position == 0 ? tags[i][0]
+            : glyph_position == 0 ? tags[i][1] 
+            : tagname_position == 0 ? masterclientontag[i] : "uhoh";
+
+
+        const char* second = num_position == 0 ? tags[i][0]
+            : glyph_position == 0 ? tags[i][1] 
+            : tagname_position == 0 ? masterclientontag[i] : "uhoh";
+
+        // Modified Version
+        if (masterclientontag[i]) 
+            snprintf(tagdisp, 64, zeroth, first, second);
+        else 
+            snprintf(tagdisp, 64, etagf, tags[i][0]);
+
+        /* This is the original: 
+
 		if (masterclientontag[i])
-			snprintf(tagdisp, 64, ptagf, tags[i], masterclientontag[i]);
+			snprintf(tagdisp, 64, ptagf, tags[i][0], tags[i][1], masterclientontag[i]);
 		else
-			snprintf(tagdisp, 64, etagf, tags[i]);
+			snprintf(tagdisp, 64, etagf, tags[i][0]);
+            */
 		masterclientontag[i] = tagdisp;
 		tagw[i] = w = TEXTW(masterclientontag[i]);
         // Changed in accordance with dwm.c.dwmcolor.rej

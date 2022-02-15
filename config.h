@@ -43,18 +43,29 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1 ",        // Terminal
-                              "2 ",        // Work
-                              "3 ",         // KeePassXC
-                              "4 ",        // Music
-                              "5 ",        // Programming
-                              "6",          // Discord - icon TBA
-                              "7",          // Use TBA 
-                              "8 ",        // Firefox
-                              "9 "         // Librewolf
+// TODO: add tag which modifies according to whether or not it has present.
+// Hence, make tag consist of two parts: each tag has the number and the 
+// symbol if it is not empty. If empty, display only the number, if not display
+// symbol as well.
+// TODO: also, this assumes you want the order NUM GLYPH TAGNAME. This can be 
+// changed as well, to accept an ordering.
+static const char *tags[][2] = { 
+                              { "1 ", "symb" },        // Terminal
+                              { "2 ", "symb" },        // Work
+                              { "3 ", "symb" },        // KeePassXC
+                              { "4 ", "symb" },        // Music
+                              { "5 ", "symb" },        // Programming
+                              { "6  ", "symb" },        // Discord - icon TBA
+                              { "7  ", "symb" },        // Use TBA 
+                              { "8 ", "symb" },        // Firefox
+                              { "9 ", "symb" },        // Librewolf
                             };
-
-static const char ptagf[] = "|%s %s|";	/* format of a tag label */
+// These are for where there is a 
+static const int num_position = 0;
+static const int glyph_position = 1;
+static const int tagname_position = 2;
+static const char ptagf[] = "|%s %s: %s|";	/* format of a tag label */
+// where there is not just add glyph into here
 static const char etagf[] = "[%s]";	/* format of an empty tag */
 static const int lcaselbl = 0;		/* 1 means make tag label lowercase */	
 
